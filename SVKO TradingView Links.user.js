@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         SVKO TradingView Links
 // @namespace    cvladan.com
-// @version      0.6.1
+// @version      0.6.2
 // @description  Turn configured TradingView canvas tickers into clickable chart links.
 // @author       cvladan
 // @match        https://www.tradingview.com/*
@@ -10,6 +10,7 @@
 // @grant        GM_getValue
 // @grant        GM_setValue
 // @grant        GM_registerMenuCommand
+// @grant        unsafeWindow
 // ==/UserScript==
 
 (function () {
@@ -172,7 +173,11 @@
     const url = 'https://www.tradingview.com/chart/?symbol=' + encodeURIComponent(area.symbol);
     if (event.shiftKey) window.open(url, '_blank', 'noopener,popup');
     else if (event.metaKey || event.ctrlKey || openInNewTab) window.open(url, '_blank', 'noopener');
-    else window.location.assign(url);
+    else {
+      const chart = unsafeWindow.TradingViewApi?._activeChartWidgetWV?.value?.();
+      if (typeof chart?.setSymbol === 'function') chart.setSymbol(area.symbol, {});
+      else window.location.assign(url);
+    }
   }, true);
 
   window.addEventListener('resize', function () {
