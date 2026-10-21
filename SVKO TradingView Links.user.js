@@ -1,9 +1,10 @@
 // ==UserScript==
 // @name         SVKO TradingView Links
 // @namespace    cvladan.com
-// @version      0.6.2
+// @version      0.6.3
 // @description  Turn configured TradingView canvas tickers into clickable chart links.
 // @author       cvladan
+// @icon         https://static.tradingview.com/static/images/favicon.ico
 // @match        https://www.tradingview.com/*
 // @match        https://*.tradingview.com/*
 // @run-at       document-start
@@ -11,7 +12,14 @@
 // @grant        GM_setValue
 // @grant        GM_registerMenuCommand
 // @grant        unsafeWindow
+// @license      LicenseRef-SVKO-Personal-Use-Commercial-1.0; https://trading.cvladan.com/licences/SVKO-1.0.txt
 // ==/UserScript==
+// Copyright (c) 2026 Vladan Colovic (SVKO).
+// SVKO Personal Use and Commercial Licence 1.0.
+// Free personal use includes trading real money for your own profit.
+// Company, employment and other business use requires a separate paid licence.
+// Terms: https://trading.cvladan.com/licences/SVKO-1.0.txt
+// Third-party material retains its own licence.
 
 (function () {
   'use strict';
